@@ -1,21 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { BiX, BiMenu } from "react-icons/bi";
-import { useDispatch } from "react-redux";
-import { logout } from "../../stores/authLoginSlice";
-import { useNavigate } from "react-router-dom";
-import ButtonSecondary from "../UI/ButtonSecondary";
+// import { useDispatch } from "react-redux";
+// import { logout } from "../../stores/authLoginSlice";
+// import { useNavigate } from "next/router";
+import ButtonSecondary from "@/components/UI/Button/ButtonSecondary";
 
 function Navbar() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  //   const dispatch = useDispatch();
+  //   const navigate = useNavigate();
 
   const [offcanvas, setOffcanvas] = useState(false);
 
   const onLogout = () => {
-    dispatch(logout());
-    navigate("/");
+    // dispatch(logout());
+    // navigate("/");
   };
+
+  const NavMenu = [
+    {
+      title: "Our Service",
+      link: "/",
+    },
+    {
+      title: "Why US",
+      link: "/",
+    },
+    {
+      title: "Testimonial",
+      link: "/",
+    },
+    {
+      title: "Register",
+      link: "/",
+    },
+  ];
 
   return (
     <nav className="py-3 px-10 bg-bluewhite">
@@ -47,38 +66,13 @@ function Navbar() {
               </button>
             </div>
             <ul className="flex lg:space-x-8 lg:justify-end lg:items-center flex-col lg:flex-row space-y-4 lg:space-y-0">
-              <li>
-                <Link to="/#" className="relative w-fit px-1 linkHover">
-                  <span>Our Sevice</span>
-                  <span className="linkHoverAttr"></span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/#" className="relative w-fit px-1 linkHover">
-                  <span>Why US</span>
-                  <span className="linkHoverAttr"></span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/#" className="relative w-fit px-1 linkHover">
-                  <span>Testimonial</span>
-                  <span className="linkHoverAttr"></span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/#" className="relative w-fit px-1 linkHover">
-                  <span>FAQ</span>
-                  <span className="linkHoverAttr"></span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/#" className=" btnSecondaryGreen">
-                  Register
-                </Link>
-              </li>
-              <li>
-                <ButtonSecondary onClick={onLogout}>Logout</ButtonSecondary>
-              </li>
+              {NavMenu.map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <Link href={item.link}>
+                    <a className="text-black font-semibold">{item.title}</a>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="lg:hidden flex items-center">
