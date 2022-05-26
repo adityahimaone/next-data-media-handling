@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -6,9 +6,18 @@ import ListItemText from "@mui/material/ListItemText";
 import { BiHomeAlt } from "react-icons/bi";
 import { BsTruck } from "react-icons/bs";
 import { useRouter } from "next/router";
+// import ExpandLess from "@mui/icons-material/ExpandLess";
+// import ExpandMore from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
 
-function MenuItems({ desktopMode }) {
+function MenuItems({ desktopMode, pathMenu }) {
   const router = useRouter();
+
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   const menuItems = [
     {
@@ -22,6 +31,13 @@ function MenuItems({ desktopMode }) {
       icon: <BsTruck className="h-8 w-8" />,
     },
   ];
+
+  console.log(pathMenu);
+
+  const menuHandler = (path, name) => {
+    router.push(path);
+    pathMenu(name);
+  };
 
   const active = (
     <span
@@ -37,7 +53,7 @@ function MenuItems({ desktopMode }) {
           button
           disablePadding={true}
           key={item.text}
-          onClick={() => router.push(item.path)}
+          onClick={() => menuHandler(item.path, item.text)}
         >
           {router.pathname === item.path ? active : null}
           <div
