@@ -7,10 +7,22 @@
 }
 
 .button {
-  &-primary-blue {
-    @apply bg-primaryDarkBlue-400 text-white font-bold py-2 px-4 rounded-sm;
+  &-primary {
+    &-blue {
+      @apply bg-primaryDarkBlue-400 text-white font-bold py-2 px-4 rounded-sm;
+    }
+    &-outline {
+      @apply bg-transparent hover:bg-primaryDarkBlue-400 hover:text-white text-primaryDarkBlue-400 border border-primaryDarkBlue-400 font-bold py-2 px-4 rounded-sm;
+    }
   }
+
   &-secondary-green {
+    @apply bg-secondaryLimeGreen-400 text-white font-bold py-2 px-4 rounded-sm;
+  }
+  &-danger-outline {
+    @apply bg-transparent hover:bg-red-500 hover:text-white text-red-500 border border-red-500 font-bold py-2 px-4 rounded-sm;
+  }
+  &-success {
     @apply bg-secondaryLimeGreen-400 text-white font-bold py-2 px-4 rounded-sm;
   }
 }
