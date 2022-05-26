@@ -28,7 +28,6 @@ function CardCar({ items }) {
   const imageNotFound =
     "https://maxler.com/local/templates/maxler/assets/img/not-found.png";
 
-  console.log(start_rent_at, "start_rent_at");
   return (
     <Card>
       <div>

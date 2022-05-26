@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 // import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 
-function MenuItems({ desktopMode, pathMenu }) {
+function MenuItems({ desktopMode, pathMenu, setTitle }) {
   const router = useRouter();
 
   const [open, setOpen] = useState(false);
@@ -32,12 +32,19 @@ function MenuItems({ desktopMode, pathMenu }) {
     },
   ];
 
-  console.log(pathMenu);
+  // console.log(pathMenu);
 
   const menuHandler = (path, name) => {
     router.push(path);
-    pathMenu(name);
+    setTitle(name);
+    // pathMenu(name);
   };
+
+  useEffect(() => {
+    // if (pathMenu !== undefined) {
+    //   setTitle(pathMenu);
+    // }
+  }, []);
 
   const active = (
     <span
@@ -53,7 +60,9 @@ function MenuItems({ desktopMode, pathMenu }) {
           button
           disablePadding={true}
           key={item.text}
-          onClick={() => menuHandler(item.path, item.text)}
+          onClick={() =>
+            menuHandler(item.path, item.text) && setTitle(item.text)
+          }
         >
           {router.pathname === item.path ? active : null}
           <div

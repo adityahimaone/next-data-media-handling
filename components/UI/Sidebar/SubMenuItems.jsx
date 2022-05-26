@@ -1,8 +1,6 @@
 import React from "react";
 
 function SubMenuItems({ pathName, namemenu }) {
-  console.log(pathName, namemenu, "pathName");
-
   const SubDashboard = {
     title: "Dashboard",
     submenu: [
