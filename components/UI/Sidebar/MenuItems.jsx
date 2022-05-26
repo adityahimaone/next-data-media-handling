@@ -1,23 +1,24 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import Link from "next/link";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { BiHomeAlt } from "react-icons/bi";
 import { BsTruck } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 function MenuItems({ desktopMode }) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const menuItems = [
     {
       text: "Dashboard",
-      path: "/home",
+      path: "/admin/dashboard",
       icon: <BiHomeAlt className="h-8 w-8" />,
     },
     {
       text: "Cars",
-      path: "/home",
+      path: "/admin/cars/listcars",
       icon: <BsTruck className="h-8 w-8" />,
     },
   ];
@@ -36,9 +37,9 @@ function MenuItems({ desktopMode }) {
           button
           disablePadding={true}
           key={item.text}
-          onClick={() => navigate.push(item.path)}
+          onClick={() => router.push(item.path)}
         >
-          {navigate.asPath === item.path ? active : null}
+          {router.pathname === item.path ? active : null}
           <div
             className={`flex p-2 w-full items-center overflow-clip ${
               desktopMode ? "flex-col justify-center" : "flex-row space-x-2"
