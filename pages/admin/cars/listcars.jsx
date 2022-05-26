@@ -11,8 +11,11 @@ import Link from "next/link";
 import ButtonSuccess from "@/components/UI/Button/ButtonSuccess";
 import ButtonDangerOutline from "@/components/UI/Button/ButtonDangerOutline";
 import CardCar from "@/components/elements/ListCars/CardCar";
+import { useRouter } from "next/router";
 
 function Listcars() {
+  const router = useRouter();
+
   const filterButton = ["All", "Small", "Medium", "Large"];
 
   const onLoadCars = () => {
@@ -25,12 +28,16 @@ function Listcars() {
     onLoadCars();
   }, []);
 
+  const addNewCardHandler = () => {
+    router.push("/admin/cars/listcars/addcar");
+  };
+
   return (
     <Layout>
       <div className="flex flex-col lg:flex-row justify-between lg:items-center space-y-4">
         <div>
           <Breadcumb />
-          <h1 className="text-2xl font-semibold my-4">List Car</h1>
+          <h1 className="heading-dashboard-h1">List Car</h1>
           <div className="flex">
             {filterButton.map((item, index) => (
               <ButtonPrimaryOutline
@@ -44,14 +51,17 @@ function Listcars() {
           </div>
         </div>
         <div>
-          <ButtonPrimary className="flex items-center">
+          <ButtonPrimary
+            className="flex items-center"
+            onClick={addNewCardHandler}
+          >
             <BiPlus />
             Add New Car
           </ButtonPrimary>
         </div>
       </div>
       <div className="my-4">
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardCar />
           <CardCar />
           <CardCar />

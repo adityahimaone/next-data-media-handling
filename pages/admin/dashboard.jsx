@@ -10,7 +10,7 @@ function Dashboard() {
         <Breadcumb />
       </div>
       <div>
-        <h1 className="text-2xl font-semibold my-4">Dashboard</h1>
+        <h1 className="heading-dashboard-h1">Dashboard</h1>
       </div>
       <div>
         <div className="my-4">

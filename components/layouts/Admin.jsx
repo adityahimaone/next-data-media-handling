@@ -13,7 +13,7 @@ function AdminLayout({ children }) {
     setMobileOpen(!mobileOpen);
   };
   return (
-    <Box sx={{ display: "flex" }}>
+    <div className="flex bg-slate-50 min-h-screen">
       <Appbar
         handleDrawerToggle={handleDrawerToggle}
         drawerWidth={drawerWidth}
@@ -43,7 +43,7 @@ function AdminLayout({ children }) {
         <Toolbar />
         <div>{children}</div>
       </Box>
-    </Box>
+    </div>
   );
 }
 

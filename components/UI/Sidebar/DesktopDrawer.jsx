@@ -17,7 +17,7 @@ function DesktopDrawer({ drawerWidth }) {
       }}
       open
     >
-      <div className="flex flex-col w-full h-screen">
+      <div className="flex flex-col w-full h-screen ">
         <Menu />
       </div>
       {/* List */}
