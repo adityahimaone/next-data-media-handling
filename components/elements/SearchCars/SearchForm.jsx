@@ -84,8 +84,8 @@ function SearchForm({ title = false }) {
               <button
                 className={`font-semibold ${
                   router?.pathname === `/user/cars/search`
-                    ? "btnPrimaryBlue"
-                    : "btnSecondaryGreen"
+                    ? "button-primary-blue"
+                    : "button-secondary-green"
                 }`}
                 isLoading={isSubmitting}
                 type="submit"

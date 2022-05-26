@@ -1,7 +1,79 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
+import { useRouter } from "next/router";
+import { BsClock } from "react-icons/bs";
+import { convertToIDR } from "@/utils/helpers/convertCurrency.helpers";
+import SearchForm from "@/components/elements/SearchCars/SearchForm";
+import HeroImg from "@/img/hero.png";
+import ButtonSuccess from "@/components/UI/Button/ButtonSuccess";
+import Layout from "@/components/layouts/User";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 function CarsDetail() {
-  return <div>[id]</div>;
+  const router = useRouter();
+  const { id } = router.query;
+  return (
+    <Layout>
+      <div className="hidden lg:block h-[230px] bg-bluewhite" />
+      <SearchForm title={true} />
+      <div className="mx-auto max-w-screen-xl py-4 ">
+        <div className="flex w-full flex-col-reverse md:flex-row lg:gap-8 px-5 xl:px-0">
+          <div className="w-full lg:w-8/12 rounded-sm shadow-lg p-4 space-y-4">
+            <div>
+              <h2 className="text-lg font-semibold">Tentang Paket</h2>
+            </div>
+            <div>
+              <h3>Include</h3>
+              <ul className="list-disc mx-5">-</ul>
+            </div>
+            <div>
+              <h3>Exclude</h3>
+              <ul className="list-disc mx-5">-</ul>
+            </div>
+          </div>
+          <div className="w-full lg:w-4/12 srounded-sm h-fit shadow-lg p-4">
+            <div className="my-4 h-56 flex justify-center items-center">
+              <Zoom zoomMargin={180} overlayBgColorEnd="rgba(18, 17, 18, 0.61)">
+                <img
+                  src={HeroImg.src}
+                  alt="car"
+                  className="max-w-sm overflow-hidden w-full h-auto"
+                />
+              </Zoom>
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold">cars name</h2>
+            </div>
+            <div className="flex flex-col md:flex-row md:space-x-2 mb-2 my-4">
+              <p className="flex items-center">
+                <BsClock className="w-5 h-5 mr-2" />
+                person
+              </p>
+              <p className="flex items-center">
+                <BsClock className="w-5 h-5 mr-2" />
+                deskripsi
+              </p>
+              <p className="flex items-center">
+                <BsClock className="w-5 h-5 mr-2" />
+                Tahun
+              </p>
+            </div>
+            <div className="flex justify-between mb-4">
+              <h4>Total</h4>
+              <h4 className="font-bold">{convertToIDR(99999)}</h4>
+            </div>
+            <ButtonSuccess className="btnSecondaryGreen">
+              Lanjutkan Pembayaran
+            </ButtonSuccess>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-center py-8">
+        <ButtonSuccess>Lanjutkan Pembayaran</ButtonSuccess>
+      </div>
+    </Layout>
+  );
 }
 
 export default CarsDetail;

@@ -10,8 +10,10 @@ import { BiPlus, BiKey } from "react-icons/bi";
 import { BsClock } from "react-icons/bs";
 import { convertToIDR } from "@/utils/helpers/convertCurrency.helpers";
 import { convertDate } from "@/utils/helpers/convertDate.helpers";
+import { useRouter } from "next/router";
 
 function CardCar({ items, onLocation }) {
+  const router = useRouter();
   const {
     id,
     name,
@@ -28,6 +30,9 @@ function CardCar({ items, onLocation }) {
   const imageNotFound =
     "https://maxler.com/local/templates/maxler/assets/img/not-found.png";
 
+  const onSelect = () => {
+    router.push(`/user/cars/${id}`);
+  };
   return (
     <Card>
       <div>
@@ -79,7 +84,9 @@ function CardCar({ items, onLocation }) {
               </ButtonSuccess>
             </>
           ) : (
-            <ButtonSuccess className="w-full">Pilih Mobil</ButtonSuccess>
+            <ButtonSuccess onClick={onSelect} className="w-full">
+              Pilih Mobil
+            </ButtonSuccess>
           )}
         </div>
       </div>
