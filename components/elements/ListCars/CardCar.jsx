@@ -11,7 +11,7 @@ import { BsClock } from "react-icons/bs";
 import { convertToIDR } from "@/utils/helpers/convertCurrency.helpers";
 import { convertDate } from "@/utils/helpers/convertDate.helpers";
 
-function CardCar({ items }) {
+function CardCar({ items, onLocation }) {
   const {
     id,
     name,
@@ -67,14 +67,20 @@ function CardCar({ items }) {
           </p>
         </div>
         <div className="flex space-x-3">
-          <ButtonDangerOutline className="w-full flex justify-center items-center">
-            <BiPlus />
-            Delete
-          </ButtonDangerOutline>
-          <ButtonSuccess className="w-full flex justify-center items-center">
-            <BiPlus />
-            Edit
-          </ButtonSuccess>
+          {onLocation === "admin" ? (
+            <>
+              <ButtonDangerOutline className="w-full flex justify-center items-center">
+                <BiPlus />
+                Delete
+              </ButtonDangerOutline>
+              <ButtonSuccess className="w-full flex justify-center items-center">
+                <BiPlus />
+                Edit
+              </ButtonSuccess>
+            </>
+          ) : (
+            <ButtonSuccess className="w-full">Pilih Mobil</ButtonSuccess>
+          )}
         </div>
       </div>
     </Card>

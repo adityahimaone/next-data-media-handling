@@ -22,12 +22,12 @@ function MenuItems({ desktopMode, pathMenu, setTitle }) {
   const menuItems = [
     {
       text: "Dashboard",
-      path: "/admin/dashboard",
+      path: "/admin",
       icon: <BiHomeAlt className="h-8 w-8" />,
     },
     {
       text: "Cars",
-      path: "/admin/cars/listcars",
+      path: "/admin/cars",
       icon: <BsTruck className="h-8 w-8" />,
     },
   ];

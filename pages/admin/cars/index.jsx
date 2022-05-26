@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 
 function Listcars() {
   const router = useRouter();
-  const [listCars, setListCars] = useState();
+  const [listCars, setListCars] = useState([]);
 
   const filterButton = ["All", "Small", "Medium", "Large"];
 
@@ -26,7 +26,7 @@ function Listcars() {
   }, []);
 
   const addNewCardHandler = () => {
-    router.push("/admin/cars/listcars/addcar");
+    router.push("/admin/cars/add");
   };
 
   return (
@@ -61,7 +61,9 @@ function Listcars() {
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {listCars &&
             listCars.length > 0 &&
-            listCars.map((item) => <CardCar key={item.id} items={item} />)}
+            listCars.map((item) => (
+              <CardCar key={item.id} items={item} onLocation="admin" />
+            ))}
         </div>
       </div>
     </Layout>
