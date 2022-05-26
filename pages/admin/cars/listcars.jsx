@@ -1,26 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@/components/layouts/Admin";
 import Breadcumb from "@/components/UI/Breadcumb/Breadcumb";
 import ButtonPrimary from "@/components/UI/Button/ButtonPrimary";
 import ButtonPrimaryOutline from "@/components/UI/Button/ButtonPrimaryOutline";
-import { BiPlus, BiKey } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
 import { apiFetch } from "@/utils/helpers/apifetch.helpers";
-import CarImg from "@/img/hero.png";
-import Image from "next/image";
-import Link from "next/link";
-import ButtonSuccess from "@/components/UI/Button/ButtonSuccess";
-import ButtonDangerOutline from "@/components/UI/Button/ButtonDangerOutline";
 import CardCar from "@/components/elements/ListCars/CardCar";
 import { useRouter } from "next/router";
 
 function Listcars() {
   const router = useRouter();
+  const [listCars, setListCars] = useState();
 
   const filterButton = ["All", "Small", "Medium", "Large"];
 
   const onLoadCars = () => {
-    apiFetch.get("/admin/cars").then((res) => {
-      console.log(res);
+    apiFetch.get("/admin/car").then((res) => {
+      // console.log(res);
+      setListCars(res.data);
     });
   };
 
@@ -62,10 +59,9 @@ function Listcars() {
       </div>
       <div className="my-4">
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          <CardCar />
-          <CardCar />
-          <CardCar />
-          <CardCar />
+          {listCars &&
+            listCars.length > 0 &&
+            listCars.map((item) => <CardCar key={item.id} items={item} />)}
         </div>
       </div>
     </Layout>
