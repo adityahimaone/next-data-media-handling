@@ -1,0 +1,600 @@
+@use "sass:map";
+
+$font-family: "Helvetica";
+
+$colors: (
+  "darkblue5": #091b6f,
+  "darkblue4": #0d28a6,
+  "darkblue3": #091b6f,
+  "darkblue2": #aeb7e1,
+  "darkblue1": #cfd4ed,
+  "limegreen5": #5cb85f,
+  "limegreen4": #5cb85f,
+  "limegreen3": #92d094,
+  "limegreen2": #c9e7ca,
+  "limegreen1": #def1df,
+  "yellow1": #f9cc00,
+);
+
+$alert: (
+  "danger": #fa2c5a,
+  "warning": #f9cc00,
+  "success": #73ca5c,
+);
+
+$background: (
+  "white1": #ffffff,
+  "white2": #f1f3ff,
+);
+
+body {
+  font-family: $font-family;
+}
+
+p {
+  margin: 0;
+}
+
+/*! Navbar overide bootsrap  */
+
+.section {
+  height: 400px;
+}
+
+.navbar-collapse {
+  justify-content: end !important;
+}
+
+.navbar {
+  background-color: map.get($background, "white2");
+
+  li {
+    margin-right: 10px;
+
+    a:hover {
+      padding: 5px;
+      border-bottom: 3px solid map.get($colors, "limegreen5");
+    }
+
+    &:last-child {
+      a {
+        color: white !important;
+        width: max-content;
+
+        &:hover {
+          padding: 0px;
+          border-bottom: 0px solid map.get($colors, "limegreen5");
+        }
+      }
+    }
+  }
+
+  .nav-link {
+    color: black !important;
+  }
+}
+
+/*! Font Custom */
+
+.fonts {
+  &-heading1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+  }
+
+  &-heading2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  &-white {
+    color: white;
+  }
+}
+
+/*! Colors Custom  */
+
+.colors {
+  &-darkblue5 {
+    background-color: map.get($colors, "darkblue5");
+  }
+  &-darkblue4 {
+    background-color: map.get($colors, "darkblue4");
+  }
+  &-darkblue3 {
+    background-color: map.get($colors, "darkblue3");
+  }
+  &-darkblue2 {
+    background-color: map.get($colors, "darkblue2");
+  }
+  &-darkblue1 {
+    background-color: map.get($colors, "darkblue1");
+  }
+  &-limegreen5 {
+    background-color: map.get($colors, "limegreen5");
+  }
+  &-limegreen4 {
+    background-color: map.get($colors, "limegreen4");
+  }
+  &-limegreen3 {
+    background-color: map.get($colors, "limegreen3");
+  }
+  &-limegreen2 {
+    background-color: map.get($colors, "limegreen2");
+  }
+  &-limegreen1 {
+    background-color: map.get($colors, "limegreen1");
+  }
+}
+
+/*! Section Hero */
+
+#hero {
+  height: 504px;
+  background-color: map.get($background, "white2");
+  overflow: hidden;
+}
+
+.hero {
+  &-right {
+    position: relative;
+    width: 50%;
+    height: 100%;
+  }
+
+  &-left {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &-shape {
+    position: absolute;
+    max-width: 800px;
+    width: 50vw;
+    height: 20vw;
+    right: -10vw;
+    bottom: 0px;
+    background: map.get($colors, "darkblue4");
+    border-radius: 60px 0px 0px 0px;
+    z-index: 0;
+  }
+
+  &-img {
+    position: absolute;
+    z-index: 1;
+    // width: 45vw;
+    // height: auto;
+    right: -5vw;
+    bottom: 40px;
+    overflow: hidden;
+  }
+}
+
+/*! Section Service */
+
+#our-service {
+  margin: 20px 0px;
+  background-color: map.get($background, "white1");
+}
+
+.service {
+  &-item {
+    height: 550px;
+    padding: 20px 40px;
+  }
+
+  &-img {
+    position: relative;
+    width: 374px;
+    height: auto;
+    z-index: 1;
+  }
+
+  &-left {
+    position: relative;
+    width: 50%;
+    height: 100%;
+  }
+
+  &-right {
+    position: relative;
+    width: 50%;
+    height: 100%;
+
+    div ul {
+      list-style-type: none;
+      padding: 0px;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  // &-shape-blue {
+  //   position: absolute;
+  //   width: 360px;
+  //   height: 360px;
+  //   left: 99px;
+  //   top: 68px;
+  //   border-radius: 50%;
+  //   background: map.get($colors, "darkblue4");
+  //   background-size: cover;
+  //   background-image: url(../img/service_girl2.png);
+  // }
+
+  &-shape-green {
+    position: absolute;
+    width: 133px;
+    height: 133px;
+    left: 30px;
+    top: 20px;
+    border-radius: 50%;
+    background: map.get($colors, "limegreen3");
+  }
+
+  &-shape-yellow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 100px;
+    bottom: 70px;
+    border-radius: 50%;
+    background: map.get($colors, "yellow1");
+  }
+
+  &-shape-red {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 150px;
+    top: 90px;
+    border-radius: 50%;
+    background: map.get($alert, "danger");
+  }
+}
+
+/*! Section Whyus */
+
+#whyus {
+  margin: 60px 0px;
+  background-color: map.get($background, "white1");
+}
+
+.card {
+  border-radius: 8px !important;
+  padding: 16px !important;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.banner-body {
+  padding: 60px 40px;
+  border-radius: 10px;
+}
+
+// .carousel-inner {
+//   overflow: visible;
+//   display: flex;
+// }
+
+// .carousel-item {
+//   margin: 20px;
+//   display: inline-block;
+// }
+
+// .carousel-control-prev {
+//   background-color: gray;
+//   height: 40px;
+//   width: 40px;
+//   border-radius: 50%;
+//   position: absolute;
+//   top: 320px;
+//   left: 930px;
+// }
+
+// .carousel-control-next {
+//   background-color: gray;
+//   height: 40px;
+//   width: 40px;
+//   border-radius: 50%;
+//   position: absolute;
+//   top: 320px;
+//   right: 930px;
+// }
+
+/*! Section Testimonial */
+
+#testimonial {
+  margin: 20px 0px;
+}
+
+.testimonial {
+  &-carousel {
+    overflow: hidden;
+    width: 100%;
+  }
+  &-card {
+    padding: 30px;
+    width: 619px;
+    height: 270px;
+    background-color: map.get($background, "white2");
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+
+    &-avatar {
+      width: 60px;
+      height: 60px;
+    }
+
+    &-star {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+/*! Caroussel Custom */
+
+.owl-nav {
+  display: block !important;
+}
+
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel button.owl-dot {
+  background: none;
+  color: inherit;
+  border: solid 1px #000;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background-color: map.get($background, "white2") !important;
+  padding: 2 !important;
+  font: inherit;
+}
+
+.owl-carousel .owl-nav button.owl-prev:hover,
+.owl-carousel .owl-nav button.owl-next:hover {
+  background-color: map.get($colors, "limegreen4") !important;
+}
+
+.owl-carousel .owl-item img {
+  display: block;
+  width: auto !important;
+}
+
+/*! Section Faq */
+
+#faq {
+  margin: 60px 0px;
+  background-color: map.get($background, "white1");
+}
+
+.faq {
+  &-left {
+    width: 50%;
+  }
+  &-right {
+    width: 50%;
+  }
+}
+
+.accordion {
+  &-item {
+    border: {
+      style: none;
+    }
+    margin: 20px 0px;
+    border-radius: 10px !important;
+    border: 2px solid #d4d4d4 !important;
+  }
+
+  &-button {
+    border-radius: 10px !important;
+    border: 0px solid #d4d4d4 !important;
+  }
+}
+
+/*! Footer */
+
+.footer {
+  &-item {
+    padding: 80px 0px;
+    a {
+      color: black;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    a:hover {
+      color: map.get($colors, "darkblue5");
+      text-decoration: underline;
+    }
+
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  &-sosmed {
+    &:hover {
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+    }
+  }
+}
+
+/*! Media Query */
+
+@media screen and (max-width: 992px) {
+  #hero {
+    height: 600px;
+    background-color: map.get($background, "white2");
+    overflow: hidden;
+  }
+
+  .hero {
+    &-right {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-left {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-shape {
+      position: absolute;
+      width: 504px;
+      height: 143px;
+      right: -10px;
+      bottom: 0px;
+      background: map.get($colors, "darkblue4");
+      border-radius: 60px 0px 0px 0px;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    &-img {
+      position: absolute;
+      z-index: 1;
+      width: 500px;
+      height: auto;
+      right: -10px;
+      bottom: 0px;
+      overflow: hidden;
+    }
+  }
+
+  #our-service {
+    margin: 40px 0px;
+    background-color: map.get($background, "white1");
+  }
+
+  .service {
+    &-item {
+      height: fit-content;
+      padding: 10px 20px;
+      overflow: hidden;
+    }
+
+    &-left {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-right {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      div ul {
+        list-style-type: none;
+        padding: 0px;
+
+        li {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    &-shape-blue {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      left: 70px;
+      top: 68px;
+      border-radius: 50%;
+      background: map.get($colors, "darkblue4");
+      overflow: hidden;
+      background-image: url(../public/img/service_girl2.png);
+      background-size: cover;
+    }
+
+    &-shape-green {
+      position: absolute;
+      width: 133px;
+      height: 133px;
+      left: 0px;
+      top: 20px;
+      border-radius: 50%;
+      background: map.get($colors, "limegreen3");
+    }
+
+    &-shape-yellow {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      left: 20px;
+      bottom: 20px;
+      border-radius: 50%;
+      background: map.get($colors, "yellow1");
+    }
+
+    &-shape-red {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      right: 80px;
+      top: 40px;
+      border-radius: 50%;
+      background: map.get($alert, "danger");
+    }
+  }
+
+  .banner-body {
+    border-radius: 0px;
+  }
+
+  #faq {
+    margin: 30px 0px;
+    background-color: map.get($background, "white1");
+  }
+
+  .faq {
+    &-left {
+      width: 100%;
+    }
+    &-right {
+      width: 100%;
+    }
+  }
+
+  .testimonial {
+    &-carousel {
+      overflow: hidden;
+      width: 100%;
+    }
+    &-card {
+      padding: 30px;
+      width: 419px;
+      height: 270px;
+      background-color: map.get($background, "white2");
+      border-radius: 10px;
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+
+      &-avatar {
+        width: 40px;
+        height: 40px;
+      }
+
+      &-star {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}

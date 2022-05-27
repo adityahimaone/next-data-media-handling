@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { useRouter } from "next/router";
-import { BsClock } from "react-icons/bs";
+import { BsClock, BsGear, BsCalendar } from "react-icons/bs";
 import { convertToIDR } from "@/utils/helpers/convertCurrency.helpers";
 import SearchForm from "@/components/elements/SearchCars/SearchForm";
 import HeroImg from "@/img/hero.png";
@@ -9,10 +9,18 @@ import ButtonSuccess from "@/components/UI/Button/ButtonSuccess";
 import Layout from "@/components/layouts/User";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import {
+  include,
+  exclude,
+  refund,
+  excludeWithoutDriver,
+  refundWithoutDriver,
+} from "@/utils/constants/packetData";
 
 function CarsDetail() {
   const router = useRouter();
   const { id } = router.query;
+
   return (
     <Layout>
       <div className="hidden lg:block h-[230px] bg-bluewhite" />
@@ -25,13 +33,30 @@ function CarsDetail() {
             </div>
             <div>
               <h3>Include</h3>
-              <ul className="list-disc mx-5">-</ul>
+              <ul className="list-disc mx-5">
+                {include.map((item, index) => {
+                  return <li key={index}>{item}</li>;
+                })}
+              </ul>
             </div>
             <div>
               <h3>Exclude</h3>
-              <ul className="list-disc mx-5">-</ul>
+              <ul className="list-disc mx-5">
+                {exclude.map((item, index) => {
+                  return <li key={index}>{item}</li>;
+                })}
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold">Refund, Resechudle, Overtime</h3>
+              <ul className="list-disc mx-5">
+                {refund.map((item, index) => {
+                  return <li key={index}>{item}</li>;
+                })}
+              </ul>
             </div>
           </div>
+
           <div className="w-full lg:w-4/12 srounded-sm h-fit shadow-lg p-4">
             <div className="my-4 h-56 flex justify-center items-center">
               <Zoom zoomMargin={180} overlayBgColorEnd="rgba(18, 17, 18, 0.61)">
@@ -51,19 +76,19 @@ function CarsDetail() {
                 person
               </p>
               <p className="flex items-center">
-                <BsClock className="w-5 h-5 mr-2" />
+                <BsGear className="w-5 h-5 mr-2" />
                 deskripsi
               </p>
               <p className="flex items-center">
-                <BsClock className="w-5 h-5 mr-2" />
+                <BsCalendar className="w-5 h-5 mr-2" />
                 Tahun
               </p>
             </div>
-            <div className="flex justify-between mb-4">
-              <h4>Total</h4>
-              <h4 className="font-bold">{convertToIDR(99999)}</h4>
+            <div className="flex items-center justify-between text-center my-7">
+              <p>Total</p>
+              <p className="font-bold">{convertToIDR(99999)}</p>
             </div>
-            <ButtonSuccess className="btnSecondaryGreen">
+            <ButtonSuccess className="w-full">
               Lanjutkan Pembayaran
             </ButtonSuccess>
           </div>

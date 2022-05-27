@@ -3,18 +3,22 @@ import Link from "next/link";
 import { BiX, BiMenu } from "react-icons/bi";
 // import { useDispatch } from "react-redux";
 // import { logout } from "../../stores/authLoginSlice";
-// import { useNavigate } from "next/router";
-import ButtonSecondary from "@/components/UI/Button/ButtonSecondary";
+import ButtonSuccess from "../Button/ButtonSuccess";
+import { useRouter } from "next/router";
 
 function Navbar() {
   //   const dispatch = useDispatch();
-  //   const navigate = useNavigate();
+  const router = useRouter();
 
   const [offcanvas, setOffcanvas] = useState(false);
 
   const onLogout = () => {
     // dispatch(logout());
     // navigate("/");
+  };
+
+  const onRegisterPage = () => {
+    router.push("/auth/register");
   };
 
   const NavMenu = [
@@ -31,7 +35,7 @@ function Navbar() {
       link: "/",
     },
     {
-      title: "Register",
+      title: "FAQ",
       link: "/",
     },
   ];
@@ -73,6 +77,9 @@ function Navbar() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <ButtonSuccess onClick={onRegisterPage}>Register</ButtonSuccess>
+              </li>
             </ul>
           </div>
           <div className="lg:hidden flex items-center">
