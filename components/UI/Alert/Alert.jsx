@@ -22,7 +22,7 @@ function Alert({ title, text, icon, confirmText, navigation }) {
       confirmButtonText: confirmTextAlert,
     }).then((result) => {
       if (result.value) {
-        route(navigationLink);
+        route.push(navigationLink);
       }
     });
   };

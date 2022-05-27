@@ -41,8 +41,8 @@ function Register() {
       {registerSuccess && (
         <Alert
           title="Registration Success"
-          text="You can continue to login"
-          navigation="/login"
+          text="You can continue to login page"
+          navigation="/auth/login"
           confirmText="Go To Login"
         />
       )}

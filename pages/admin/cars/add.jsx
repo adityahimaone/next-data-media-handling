@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { TextField } from "@mui/material";
 import { apiFetch } from "@/utils/helpers/apifetch.helpers";
 import Image from "next/image";
+import Alert from "@/components/UI/Alert/Alert";
 
 function AddNewCar() {
   const {
@@ -16,6 +17,8 @@ function AddNewCar() {
     setValue,
   } = useForm();
 
+  const [successPost, setSuccessPost] = useState(false);
+
   const onSubmit = async (payload) => {
     const formData = new FormData();
     for (let key in payload) {
@@ -23,13 +26,27 @@ function AddNewCar() {
     }
     formData.append("image", payload.image[0]);
 
-    apiFetch.post("/admin/car", formData).then((res) => {
-      console.log(res);
-    });
+    apiFetch
+      .post("/admin/car", formData)
+      .then((res) => {
+        console.log(res);
+        setSuccessPost(true);
+      })
+      .catch((err) => {
+        setSuccessPost(false);
+      });
   };
 
   return (
     <Layout>
+      {successPost && (
+        <Alert
+          title="Add Car Success"
+          text="You can continue to list car page"
+          navigation="/admin/cars"
+          confirmText="Go To List Car"
+        />
+      )}
       <div>
         <Breadcumb />
         <h1 className="heading-dashboard-h1">Add New Car</h1>
