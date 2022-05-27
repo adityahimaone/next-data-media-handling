@@ -7,6 +7,14 @@ import ButtonSecondary from "@/components/UI/Button/ButtonSecondary";
 import Container from "@/components/UI/Container/ContainerDefault";
 import ServiceGirl from "@/img/service_girl.png";
 import ChecklistImg from "@/img/ceklist.svg";
+import CardWhyUs from "@/components/elements/LandingPage/CardWhyUs";
+import Carousel from "@/components/elements/LandingPage/Carousel";
+import ButtonSuccess from "@/components/UI/Button/ButtonSuccess";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import { BiChevronDown } from "react-icons/bi";
+import AccordionFAQ from "@/components/elements/LandingPage/AccordionFAQ";
 
 export default function Home() {
   const serviceList = [
@@ -45,9 +53,12 @@ export default function Home() {
       </section>
       <Container>
         <section>
-          <div className="flex justify-around m-16 border">
-            <div className="w-1/2 bg-green-50 ">
-              <div className="flex justify-center">
+          <div className="flex flex-col xl:flex-row justify-around m-16">
+            <div className="w-full xl:w-1/2">
+              <div className="flex justify-center relative">
+                <div className="absolute top-1 left-0 w-[133px] h-[133px] bg-green-500 rounded-full" />
+                <div className="absolute top-14 right-36 w-[25px] h-[25px] bg-red-500 rounded-full" />
+                <div className="absolute bottom-4 left-28 w-[48px] h-[48px] bg-yellow-500 rounded-full" />
                 <Image
                   src={ServiceGirl}
                   alt="service"
@@ -56,7 +67,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="w-1/2 bg-red-50 flex items-center">
+            <div className="w-full xl:w-1/2 flex items-center">
               <div className="space-y-4 flex flex-col ">
                 <h2 className="text-2xl font-semibold">
                   Best Car Rental for any kind of trip in (Lokasimu)!
@@ -76,6 +87,45 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+        <section className="space-y-4 m-6">
+          <h2 className="text-2xl font-semibold">Why Us?</h2>
+          <p>Mengapa harus pilih Binar Car Rental?</p>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+            <CardWhyUs />
+          </div>
+        </section>
+      </Container>
+      <section className="m-20">
+        <div className="text-center space-y-5s">
+          <h1 className="text-2xl font-bold">Testimonial</h1>
+          <p>Berbagai review positif dari para pelanggan kami</p>
+          <Carousel />
+        </div>
+      </section>
+      <Container>
+        <section className="p-16 space-y-5 bg-primaryDarkBlue-400 text-white rounded-lg text-center">
+          <h1 className="text-3xl font-semibold">
+            Sewa Mobil di (Lokasimu) Sekarang
+          </h1>
+          <p className="text-gray-300">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <ButtonSuccess>Mulai Sewa Mobil</ButtonSuccess>
+        </section>
+        <section className="my-12">
+          <div className="flex w-full">
+            <div className="w-5/12">
+              <h1 className="font-semibold text-2xl">
+                Frequently Asked Question
+              </h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            </div>
+            <div className="w-7/12">
+              <AccordionFAQ />
             </div>
           </div>
         </section>
