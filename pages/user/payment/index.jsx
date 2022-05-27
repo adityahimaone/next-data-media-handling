@@ -4,6 +4,7 @@ import SearchForm from "@/components/elements/SearchCars/SearchForm";
 import { BsArrowLeft, BsFillCheckCircleFill } from "react-icons/bs";
 import classNames from "classnames";
 import ButtonPrimaryOutline from "@/components/UI/Button/ButtonPrimaryOutline";
+import PreviewPDF from "@/components/UI/PreviewPDF/PreviewPDF";
 
 function Payment() {
   const [page, setPage] = useState(3);
@@ -140,6 +141,9 @@ const StepThree = () => {
             <div>
               <ButtonPrimaryOutline>Unduh</ButtonPrimaryOutline>
             </div>
+          </div>
+          <div>
+            <PreviewPDF />
           </div>
         </div>
       </div>
