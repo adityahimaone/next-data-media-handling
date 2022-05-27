@@ -5,7 +5,7 @@ import LoginGoogleOauth from "@/components/elements/GoogleOauth/LoginButton";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-// import { setAuthLogin } from "@/store/auth/loginSlice";
+import { setAuthLogin } from "@/store/auth/loginSlice";
 import { apiFetch } from "@/utils/helpers/apifetch.helpers";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
@@ -29,7 +29,7 @@ function Login() {
     apiFetch
       .post("/admin/auth/login", payload)
       .then((res) => {
-        // dispatch(setAuthLogin(res.data));
+        dispatch(setAuthLogin(res.data));
       })
       .catch((err) => {
         setLoginFailed(err.response.data.message);
@@ -53,10 +53,10 @@ function Login() {
 
   useEffect(() => {
     if (infoUser.role === "admin") {
-      navigate("/dashboard");
+      router.push("/admin");
     }
     if (infoUser.role === "Customer") {
-      navigate("/home");
+      router.push("/user");
     }
   }, [infoUser]);
 

@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { BiX, BiMenu } from "react-icons/bi";
-// import { useDispatch } from "react-redux";
-// import { logout } from "../../stores/authLoginSlice";
+import { useDispatch } from "react-redux";
 import ButtonSuccess from "../Button/ButtonSuccess";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { logout } from "@/store/auth/loginSlice";
 
 function Navbar() {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const router = useRouter();
+  const infoUser = useSelector((state) => state.user);
 
   const [offcanvas, setOffcanvas] = useState(false);
 
-  const onLogout = () => {
-    // dispatch(logout());
-    // navigate("/");
-  };
-
-  const onRegisterPage = () => {
-    router.push("/auth/register");
+  const onNavigate = () => {
+    if (infoUser.isLoggedIn === true) {
+      dispatch(logout());
+      router.push("/");
+    } else {
+      router.push("/auth/register");
+    }
   };
 
   const NavMenu = [
@@ -78,7 +80,9 @@ function Navbar() {
                 </li>
               ))}
               <li>
-                <ButtonSuccess onClick={onRegisterPage}>Register</ButtonSuccess>
+                <ButtonSuccess onClick={onNavigate}>
+                  {infoUser.isLoggedIn === true ? "Logout" : "Register"}
+                </ButtonSuccess>
               </li>
             </ul>
           </div>
