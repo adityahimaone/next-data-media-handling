@@ -34,17 +34,9 @@ function MenuItems({ desktopMode, pathMenu, setTitle }) {
 
   // console.log(pathMenu);
 
-  const menuHandler = (path, name) => {
+  const menuHandler = (path) => {
     router.push(path);
-    setTitle(name);
-    // pathMenu(name);
   };
-
-  useEffect(() => {
-    // if (pathMenu !== undefined) {
-    //   setTitle(pathMenu);
-    // }
-  }, []);
 
   const active = (
     <span
@@ -60,9 +52,7 @@ function MenuItems({ desktopMode, pathMenu, setTitle }) {
           button
           disablePadding={true}
           key={item.text}
-          onClick={() =>
-            menuHandler(item.path, item.text) && setTitle(item.text)
-          }
+          onClick={() => menuHandler(item.path)}
         >
           {router.pathname === item.path ? active : null}
           <div

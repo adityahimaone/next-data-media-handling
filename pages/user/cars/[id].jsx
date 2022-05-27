@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { BsClock, BsGear, BsCalendar } from "react-icons/bs";
+import { BsClock, BsGear, BsCalendar, BsPerson } from "react-icons/bs";
 import { convertToIDR } from "@/utils/helpers/convertCurrency.helpers";
 import SearchForm from "@/components/elements/SearchCars/SearchForm";
 import HeroImg from "@/img/hero.png";
@@ -16,10 +16,32 @@ import {
   excludeWithoutDriver,
   refundWithoutDriver,
 } from "@/utils/constants/packetData";
+import { apiFetch } from "@/utils/helpers/apifetch.helpers";
+import { convertDate } from "@/utils/helpers/convertDate.helpers";
 
 function CarsDetail() {
   const router = useRouter();
   const { id } = router.query;
+  const [car, setCar] = useState({});
+
+  const onLoadCar = () => {
+    apiFetch
+      .get(`/admin/car/${id}`)
+      .then((res) => {
+        setCar(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    onLoadCar();
+  }, []);
+
+  const onNavigate = () => {
+    router.push("/user/payment");
+  };
 
   return (
     <Layout>
@@ -61,41 +83,40 @@ function CarsDetail() {
             <div className="my-4 h-56 flex justify-center items-center">
               <Zoom zoomMargin={180} overlayBgColorEnd="rgba(18, 17, 18, 0.61)">
                 <img
-                  src={HeroImg.src}
+                  src={car.image}
                   alt="car"
                   className="max-w-sm overflow-hidden w-full h-auto"
                 />
               </Zoom>
             </div>
             <div>
-              <h2 className="text-lg font-semibold">cars name</h2>
+              <h2 className="text-lg font-semibold">{car.name}</h2>
             </div>
             <div className="flex flex-col md:flex-row md:space-x-2 mb-2 my-4">
               <p className="flex items-center">
-                <BsClock className="w-5 h-5 mr-2" />
-                person
+                <BsPerson className="w-5 h-5 mr-2" />4 Orang
               </p>
               <p className="flex items-center">
                 <BsGear className="w-5 h-5 mr-2" />
-                deskripsi
+                {car.category}
               </p>
               <p className="flex items-center">
                 <BsCalendar className="w-5 h-5 mr-2" />
-                Tahun
+                {convertDate(car.createdAt)}
               </p>
             </div>
             <div className="flex items-center justify-between text-center my-7">
               <p>Total</p>
               <p className="font-bold">{convertToIDR(99999)}</p>
             </div>
-            <ButtonSuccess className="w-full">
+            <ButtonSuccess onClick={onNavigate} className="w-full">
               Lanjutkan Pembayaran
             </ButtonSuccess>
           </div>
         </div>
       </div>
       <div className="flex justify-center py-8">
-        <ButtonSuccess>Lanjutkan Pembayaran</ButtonSuccess>
+        <ButtonSuccess onClick={onNavigate}>Lanjutkan Pembayaran</ButtonSuccess>
       </div>
     </Layout>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-function SubMenuItems({ pathName, namemenu }) {
+function SubMenuItems({ pathName }) {
   const SubDashboard = {
     title: "Dashboard",
     submenu: [
@@ -16,7 +16,7 @@ function SubMenuItems({ pathName, namemenu }) {
     submenu: [
       {
         name: "List Cars",
-        path: "/admin/cars/listcars",
+        path: "/admin/cars",
       },
     ],
   };
@@ -24,9 +24,23 @@ function SubMenuItems({ pathName, namemenu }) {
   return (
     <>
       <h1 className="text-lg font-semibold my-4">
-        {pathName === "Dashboard" ? "Dashboard" : "Dashboard"}
+        {pathName === "/admin" ? SubDashboard.title : SubCars.title}
       </h1>
-      <h2 className="text-md">Dashboard</h2>
+      <h2 className="text-md">
+        <ul>
+          {pathName === "/admin"
+            ? SubDashboard.submenu.map((item, index) => (
+                <li key={index}>
+                  <a href={item.path}>{item.name}</a>
+                </li>
+              ))
+            : SubCars.submenu.map((item, index) => (
+                <li key={index}>
+                  <a href={item.path}>{item.name}</a>
+                </li>
+              ))}
+        </ul>
+      </h2>
     </>
   );
 }
