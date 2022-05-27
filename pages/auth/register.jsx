@@ -77,7 +77,10 @@ function Register() {
               <ButtonPrimary type="submit">Sign Up</ButtonPrimary>
               <div className="inline-flex space-x-1 text-md">
                 <p>Already Have an account? </p>
-                <Link href="/login" className="hover:text-primaryDarkBlue-400">
+                <Link
+                  href="/auth/login"
+                  className="hover:text-primaryDarkBlue-400"
+                >
                   Login
                 </Link>
               </div>

@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import authLoginSlice from "./authLoginSlice";
+import authLoginSlice from "./auth/loginSlice";
 import storage from "./storage";
 import {
   persistReducer,
