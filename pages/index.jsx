@@ -15,6 +15,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { BiChevronDown } from "react-icons/bi";
 import AccordionFAQ from "@/components/elements/LandingPage/AccordionFAQ";
+import Chart from "@/components/elements/LandingPage/Chart";
 
 export default function Home() {
   const serviceList = [
@@ -95,6 +96,17 @@ export default function Home() {
           <p>Mengapa harus pilih Binar Car Rental?</p>
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
             <CardWhyUs />
+          </div>
+        </section>
+        <section>
+          <div className="flex flex-col lg:flex-row p-8 justify-center items-center">
+            <div className="w-1/2 space-y-2">
+              <h1 className="text-3xl font-semibold">Cabang Kami</h1>
+              <p>Cabang yang kami miliki.</p>
+            </div>
+            <div className="w-1/2 relative flex justify-center">
+              <Chart />
+            </div>
           </div>
         </section>
       </Container>
