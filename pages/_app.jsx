@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <PersistGate Loading={null} persistor={persistor}>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </PersistGate>
     </Provider>
   );

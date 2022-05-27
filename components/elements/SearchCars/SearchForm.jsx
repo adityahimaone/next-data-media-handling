@@ -19,7 +19,13 @@ function SearchForm({ title = false }) {
   const pickupTime = ["08.00", "09.00", "10.00", "11.00", "12.00"];
 
   const onSubmit = (values) => {
-    console.log(values);
+    if (router.pathname === "/user") {
+      // dispatch(saveSearch(values));
+      router.push(`/user/cars/search`);
+    } else {
+      dispatch(saveSearch(values));
+      // router(getCars());
+    }
   };
 
   return (
@@ -89,7 +95,6 @@ function SearchForm({ title = false }) {
                 }`}
                 isLoading={isSubmitting}
                 type="submit"
-                dis
                 isDisabled={router?.pathname === `/cars/${id}`}
               >
                 {router?.pathname === `/user/cars/search`

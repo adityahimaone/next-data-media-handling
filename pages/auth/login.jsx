@@ -68,7 +68,7 @@ function Login() {
   return (
     <div className="flex flex-col lg:flex-row w-full h-screen mx-auto">
       <div className={cx}></div>
-      <div className="w-full lg:w-[30%]  flex flex-col justify-center items-center">
+      <div className="w-full lg:w-[35%]  flex flex-col justify-center items-center">
         <div className="w-full p-10">
           <h1 className="text-2xl text-left font-bold my-5">
             Welcome, Admin BCR
