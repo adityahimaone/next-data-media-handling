@@ -1,9 +1,9 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 function Alert({ title, text, icon, confirmText, navigation }) {
-  const navigate = useNavigate();
+  const route = useRouter();
   const MySwal = withReactContent(Swal);
   const titleAlert = title ? title : "Alert";
   const textAlert = text ? text : "This is a simple alert";
@@ -22,7 +22,7 @@ function Alert({ title, text, icon, confirmText, navigation }) {
       confirmButtonText: confirmTextAlert,
     }).then((result) => {
       if (result.value) {
-        navigate(navigationLink);
+        route(navigationLink);
       }
     });
   };

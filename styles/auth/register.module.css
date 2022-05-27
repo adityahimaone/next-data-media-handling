@@ -1,0 +1,11 @@
+.background-image-login {
+  background-image: url("../../public/img/login-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}/*# sourceMappingURL=register.module.css.map */
