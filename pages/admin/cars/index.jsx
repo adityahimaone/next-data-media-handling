@@ -7,18 +7,27 @@ import { BiPlus } from "react-icons/bi";
 import { apiFetch } from "@/utils/helpers/apifetch.helpers";
 import CardCar from "@/components/elements/ListCars/CardCar";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { getCars, getCarsSuccess, getCarsError } from "@/store/cars/carsSlice";
+import SkeletonLoader from "@/components/UI/Skeleton/Skeleton";
 
 function Listcars() {
   const router = useRouter();
-  const [listCars, setListCars] = useState([]);
+  const dispatch = useDispatch();
+  const cars = useSelector((state) => state.cars);
 
   const filterButton = ["All", "Small", "Medium", "Large"];
 
   const onLoadCars = () => {
-    apiFetch.get("/admin/car").then((res) => {
-      // console.log(res);
-      setListCars(res.data);
-    });
+    dispatch(getCars());
+    apiFetch
+      .get("/admin/car")
+      .then((res) => {
+        dispatch(getCarsSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(getCarsError());
+      });
   };
 
   useEffect(() => {
@@ -28,6 +37,8 @@ function Listcars() {
   const addNewCardHandler = () => {
     router.push("/admin/cars/add");
   };
+
+  const skeletonValue = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
     <Layout>
@@ -58,10 +69,17 @@ function Listcars() {
         </div>
       </div>
       <div className="my-4">
+        {cars.loading && (
+          <div className="mx-auto max-w-screen-xl grid grid-cols-3 gap-6">
+            {skeletonValue.map((item, index) => (
+              <SkeletonLoader key={index} />
+            ))}
+          </div>
+        )}
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {listCars &&
-            listCars.length > 0 &&
-            listCars.map((item) => (
+          {cars?.data &&
+            cars?.data.length > 0 &&
+            cars?.data.map((item) => (
               <CardCar key={item.id} items={item} onLocation="admin" />
             ))}
         </div>

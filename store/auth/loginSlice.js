@@ -19,7 +19,7 @@ export const authLogin = createSlice({
       state.role = role;
       state.accessToken = access_token;
     },
-setAuthGoogleLogin: (state, action) => {
+    setAuthGoogleLogin: (state, action) => {
       console.log(action.payload, "redux");
       const { name, email, accessToken } = action.payload;
       const role = "Customer";

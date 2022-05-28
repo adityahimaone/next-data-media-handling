@@ -55,7 +55,7 @@ function CardCar({ items, onLocation }) {
           )}
         </div>
         <div className="space-y-1 mt-11">
-          <h3>{name}</h3>
+          <h3>{name ? name : "Not Set"}</h3>
           <h2 className="text-xl lg:text-lg font-semibold">
             {price ? convertToIDR(price) : 0} / Hari
           </h2>

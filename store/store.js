@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import authLoginSlice from "./auth/loginSlice";
+import carsSlice from "./cars/carsSlice";
 import storage from "./storage";
 import {
   persistReducer,
@@ -16,6 +17,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 const reducers = combineReducers({
   user: authLoginSlice,
+  cars: carsSlice,
 });
 
 const persistConfig = {
