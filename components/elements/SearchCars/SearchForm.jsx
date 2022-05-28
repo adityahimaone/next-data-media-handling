@@ -41,7 +41,7 @@ function SearchForm({ title = false }) {
             <select
               defaultValue="Dengan Sopir"
               {...register("type_driver")}
-              className="border border-gray-300 rounded-sm p-1.5 w-full"
+              className="border border-gray-300 rounded-sm p-2.5 w-full"
             >
               {typeDriver.map((item, index) => (
                 <option key={index} value={item}>
@@ -66,7 +66,7 @@ function SearchForm({ title = false }) {
             <select
               defaultValue="08.00"
               {...register("pickup_time")}
-              className="border border-gray-300 rounded-sm p-1.5 w-full"
+              className="border border-gray-300 rounded-sm p-2.5 w-full"
             >
               {pickupTime.map((item, index) => (
                 <option key={index} value={item}>

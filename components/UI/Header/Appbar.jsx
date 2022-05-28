@@ -6,10 +6,12 @@ import { BiHomeAlt, BiMenu, BiChevronDown } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { logout } from "@/store/auth/loginSlice";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 function Appbar({ drawerWidth, handleDrawerToggle }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const infoUser = useSelector((state) => state.user);
 
   const [dropdown, setDropdown] = useState(false);
 
@@ -17,6 +19,11 @@ function Appbar({ drawerWidth, handleDrawerToggle }) {
     // dispatch(logout());
     dispatch(logout());
     router.push("/");
+  };
+
+  //function takes the first letter of the alphabet from a string
+  const firstLetter = (str) => {
+    return str.charAt(0).toUpperCase();
   };
 
   return (
@@ -54,9 +61,11 @@ function Appbar({ drawerWidth, handleDrawerToggle }) {
             <button type="button" onClick={() => setDropdown(!dropdown)}>
               <div className="text-black font-semibold flex items-center space-x-2">
                 <div className="w-8 h-8 rounded-full bg-violet-300 flex justify-center items-center">
-                  U
+                  {infoUser.email ? firstLetter(infoUser.email) : "X"}
                 </div>
-                <p className="font-normal">Unis Badri</p>
+                <p className="font-normal">
+                  {infoUser.email ? infoUser.email : "Admin"}
+                </p>
                 <BiChevronDown className="h-7 w-7" />
               </div>
             </button>
